@@ -155,7 +155,7 @@ p{font-size:1rem;line-height:1.9;color:var(--ink-mid);max-width:540px;margin:0 a
 
 /* ── GALLERY GRID ── */
 .gallery-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:2.4rem;}
-.gallery-item{position:relative;overflow:hidden;cursor:pointer;width:180px;aspect-ratio:1;background:var(--bg-warm);transition:transform .25s ease,box-shadow .25s ease;}
+.gallery-item{position:relative;overflow:hidden;cursor:pointer;width:180px;aspect-ratio:1;background:var(--bg-warm);transition:transform .25s ease,box-shadow .25s ease;contain:layout style paint;}
 @media(max-width:480px){.gallery-item{width:calc(50% - .3rem);}}
 .gallery-item:hover{transform:translateY(-3px);box-shadow:0 4px 14px rgba(92,58,30,.12);}
 .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -163,15 +163,15 @@ p{font-size:1rem;line-height:1.9;color:var(--ink-mid);max-width:540px;margin:0 a
 .gallery-item .ph svg{width:24px;height:24px;opacity:.22;}
 .gallery-item .ph span{font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--brown);opacity:.25;}
 /* Image popup overlay */
-.img-popup{position:fixed;inset:0;z-index:200;background:rgba(20,12,4,.88);display:flex;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px);cursor:zoom-out;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+.img-popup{position:fixed;inset:0;z-index:200;background:rgba(20,12,4,.88);display:flex;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px);cursor:zoom-out;opacity:0;pointer-events:none;transition:opacity .3s ease;overflow:hidden;}
 .img-popup.open{opacity:1;pointer-events:auto;}
-.img-popup img{max-width:92vw;max-height:88vh;object-fit:contain;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.5);transform:scale(.92);transition:transform .35s cubic-bezier(.16,1,.3,1);}
-.img-popup.open img{transform:scale(1);}
+.img-popup img{max-width:92vw;max-height:88vh;object-fit:contain;border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,.5);}
 
 /* ── REGISTRY ── */
 .registry-homestead{
   position:relative;overflow:hidden;margin-top:2.4rem;
-  height:clamp(180px,24vw,300px);
+  max-width:520px;margin-left:auto;margin-right:auto;
+  aspect-ratio:4/3;
   border-radius:12px;
 }
 .registry-homestead img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;border-radius:12px;}
@@ -181,7 +181,7 @@ p{font-size:1rem;line-height:1.9;color:var(--ink-mid);max-width:540px;margin:0 a
   display:inline-flex;align-items:center;gap:.7rem;
   font-family:'Rye',serif;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;line-height:20px;
   padding:.88rem 2.1rem;text-decoration:none;
-  border:1px solid var(--border);background:var(--bg-card);color:var(--brown);
+  border:1px solid var(--border);background:var(--bg-card);color:var(--brown);cursor:pointer;
   transition:background .2s,color .2s,border-color .2s,transform .15s;
 }
 .reg-pay-btn:hover{background:var(--brown);color:#fff;border-color:var(--brown);}
@@ -209,15 +209,23 @@ textarea{resize:vertical;min-height:88px;max-height:400px;}
 @media(max-width:480px){.form-row{grid-template-columns:1fr;}}
 .btn{display:block;width:100%;font-family:'Rye',serif;font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:#fff;background:var(--brown-lt);border:none;padding:.92rem 2rem;cursor:pointer;margin-top:.5rem;transition:background .2s,transform .15s;}
 .btn:hover{background:var(--brown);transform:translateY(-1px);}
-.rsvp-success{display:none;padding:2.2rem;border:1px solid var(--border);background:var(--bg-card);text-align:center;}
-.rsvp-success.show{display:block;}
+.rsvp-form{position:relative;}
+.rsvp-form form{transition:opacity .4s ease;}
+.rsvp-success{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.2rem;border:1px solid var(--border);background:var(--bg-card);text-align:center;opacity:0;pointer-events:none;transition:opacity .5s ease;}
+.rsvp-success.show{opacity:1;pointer-events:auto;}
 .rsvp-success p{font-family:'IM Fell English',serif;font-size:1.15rem;font-style:italic;}
 #result{margin-top:.75rem;font-size:.85rem;font-style:italic;color:var(--brown-mid);}
+
+/* ── VERSE ── */
+.sec-verse{font-family:'IM Fell English',serif;font-style:italic;font-size:.95rem;color:var(--brown);opacity:.62;max-width:480px;margin:.6rem auto 0;line-height:1.6;}
+.sec-verse .v::before{content:'\201C';}
+.sec-verse .v::after{content:'\201D';}
+.sec-verse cite{display:block;font-style:normal;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;margin-top:.35rem;opacity:.7;}
 
 /* ── FOOTER ── */
 footer{text-align:center;padding:3.5rem 2rem 2.8rem;border-top:1px solid var(--border);background:var(--bg);}
 .footer-names{font-family:'Rye',serif;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--brown);margin:1rem 0 .3rem;}
-footer .tagline{font-family:'IM Fell English',serif;font-style:italic;font-size:.9rem;color:var(--ink-mid);opacity:.38;}
+footer .tagline{font-family:'IM Fell English',serif;font-style:italic;font-size:.9rem;color:var(--ink-mid);opacity:.38;margin-top:0;margin-bottom:0;}
 footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:uppercase;margin-top:1.4rem;}
 
 </style>
@@ -237,7 +245,7 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <section id="hero">
   <div class="hero-logo-wrap">
-    <img src="assets/hero-image.png" alt="Saddle Up for the Wedding of Dane & Kristin" />
+    <img src="assets/hero-image.png" alt="Saddle Up for the Wedding of Dane & Kristin" fetchpriority="high" decoding="async" />
   </div>
 
   <hr class="sec-rule" style="max-width:clamp(280px,55vw,460px);margin-bottom:1.1rem;">
@@ -271,6 +279,7 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
     <h2 class="reveal d1">Details</h2>
     <!-- elegant diamond rule -->
     <hr class="sec-rule reveal d1">
+    <p class="sec-verse reveal d1"><span class="v">This is my commandment, that you love one another as I have loved you.</span><cite>John 15:12</cite></p>
 
     <div class="details-grid">
       <div class="detail-card reveal d1">
@@ -295,6 +304,7 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
     <span class="sec-label reveal">The Day's Events</span>
     <h2 class="reveal d1">Schedule</h2>
     <hr class="sec-rule reveal d1">
+    <p class="sec-verse reveal d1"><span class="v">He who finds a wife finds a good thing and obtains favor from the Lord.</span><cite>Proverbs 18:22</cite></p>
     <div class="timeline">
       <div class="tl-item reveal">
         <div class="tl-left"><span class="tl-time">5:00 PM</span><span class="tl-title">Guests Arrive</span></div>
@@ -326,6 +336,7 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
     <span class="sec-label reveal">Getting Here</span>
     <h2 class="reveal d1">Travel &amp; Parking</h2>
     <hr class="sec-rule reveal d1">
+    <p class="sec-verse reveal d1"><span class="v">What therefore God has joined together, let not man separate.</span><cite>Mark 10:9</cite></p>
     <div class="travel-grid">
       <div class="travel-card reveal d1">
         <h3>Getting There</h3>
@@ -345,6 +356,7 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
     <span class="sec-label reveal">Our Life</span>
     <h2 class="reveal d1">Gallery</h2>
     <hr class="sec-rule reveal d1">
+    <p class="sec-verse reveal d1"><span class="v">Let your fountain be blessed, and rejoice in the wife of your youth.</span><cite>Proverbs 5:18</cite></p>
 
     <div class="gallery-grid reveal d2" id="galleryGrid"></div>
   </div>
@@ -356,10 +368,10 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
     <span class="sec-label reveal">What You Were Waiting For</span>
     <h2 class="reveal d1">Registry</h2>
     <hr class="sec-rule reveal d1" style="margin-bottom:.4rem;">
-    <p class="reveal d2" style="font-family:'Cormorant Garamond',serif;font-size:1.08rem;color:var(--brown);opacity:.82;max-width:400px;letter-spacing:.12em;">THE HOMESTEAD FUND</p>
-
+    <p class="sec-verse reveal d1"><span class="v">Husbands, love your wives, as Christ loved the church and gave himself up for her.</span><cite>Ephesians 5:25</cite></p>
     <!-- Homestead image — no overlay text, compact -->
-    <div class="registry-homestead reveal d2">
+    <div class="registry-homestead reveal d2" style="margin-top:1.8rem;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--brown);letter-spacing:.15em;margin-bottom:.6rem;font-weight:600;">THE HOMESTEAD FUND</p>
       <img src="https://i.ytimg.com/vi/nLZ0Qt6Shvs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDiKQyDcgmKJGGlAWFYR6k0TXCRNA" alt="Our future homestead" />
     </div>
 
@@ -368,11 +380,14 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.29 1.5c.87 1.44 1.26 2.92 1.26 4.78 0 5.95-5.08 13.68-9.2 19.12H5.23L2 2.7l7.06-.66 1.83 14.66c1.7-2.77 3.8-7.14 3.8-10.13 0-1.76-.3-2.96-.78-3.94L21.29 1.5z" fill="#a8723e"/></svg>
         Venmo
       </a>
-      <!-- Zelle monogram Z from simpleicons, colorized to theme -->
-      <a href="https://enroll.zellepay.com/qr-codes?data=eyJuYW1lIjoiS3Jpc3RpbiIsInRva2VuIjoiMTY1NzIwMzMyMTgifQ==" class="reg-pay-btn" target="_blank" rel="noopener">
+      <button type="button" class="reg-pay-btn" id="zelleBtn">
         <img src="https://cdn.simpleicons.org/zelle/a8723e" alt="Zelle" />
         Zelle
-      </a>
+      </button>
+    </div>
+    <div id="zelleInfo" style="margin-top:1.2rem;padding:0 1.6rem;border:1px solid transparent;background:var(--bg-card);text-align:center;max-width:320px;margin-left:auto;margin-right:auto;max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,padding .35s ease,border-color .35s ease;">
+      <p style="font-family:'Rye',serif;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brown-lt);margin-bottom:.5rem;">Send via Zelle to</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--brown);">Kristin &middot; +1 (657) 203-3218</p>
     </div>
   </div>
 </div>
@@ -384,43 +399,33 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
       <span class="sec-label reveal">Kindly Reply By July 11th</span>
       <h2 class="reveal d1">RSVP</h2>
       <hr class="sec-rule reveal d1" style="max-width:clamp(160px,30vw,280px);">
+      <p class="sec-verse reveal d1"><span class="v">For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.</span><cite>Jeremiah 29:11</cite></p>
       <div class="rsvp-form reveal d2">
         <div class="rsvp-success" id="rsvpSuccess">
-          <p>We can't wait to celebrate with you. ✦</p>
+          <p id="rsvpMsg">We can't wait to celebrate with you.</p>
           <p style="font-size:.82rem;opacity:.55;margin-top:.7rem;font-style:normal;">Your response has been received.</p>
         </div>
         <form id="rsvpForm">
-          <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+          <input type="hidden" name="access_key" value="917b4e35-5da1-4ab5-8783-cb35c41d5d79">
           <input type="hidden" name="subject" value="Wedding RSVP - Dane & Kristin">
           <input type="hidden" name="from_name" value="Wedding RSVP">
           <input type="checkbox" name="botcheck" style="display:none;">
           <div class="form-row">
-            <div class="form-group"><label>First Name</label><input type="text" name="First Name" placeholder="First" required></div>
-            <div class="form-group"><label>Last Name</label><input type="text" name="Last Name" placeholder="Last" required></div>
+            <div class="form-group"><label>First Name <span style="color:var(--brown-lt);opacity:.6;">*</span></label><input type="text" name="First Name" placeholder="First" required></div>
+            <div class="form-group"><label>Last Name <span style="color:var(--brown-lt);opacity:.6;">*</span></label><input type="text" name="Last Name" placeholder="Last" required></div>
           </div>
-          <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
+          <div class="form-group"><label>Email Address <span style="font-size:.75rem;opacity:.45;font-style:italic;">(optional)</span></label><input type="email" name="email" placeholder="your@email.com"></div>
           <div class="form-group">
-            <label>Will any of ya'll be attending?</label>
+            <label>Will ya'll be attending? <span style="color:var(--brown-lt);opacity:.6;">*</span></label>
             <select name="Attending" id="attending" required>
               <option value="" disabled selected>Select</option>
               <option value="Darn Tootin'!">Darn Tootin'!</option>
-              <option value="Respectfully declines. YEEHAW!">Respectfully declines. YEEHAW!</option>
+              <option value="Respectfully decline. YEEHAW!">Respectfully decline. YEEHAW!</option>
             </select>
           </div>
-          <div class="form-group" id="guestCountGroup">
-            <label>Number of guests from your party (including yourself)</label>
-            <select name="Guest Count">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Names of guests attending</label>
-            <textarea name="Guest Names" placeholder="Please list the full names of everyone in your party able to attend!"></textarea>
+          <div class="form-group" id="guestNamesGroup" style="display:none;">
+            <label>If anyone in your party is unable to attend, please list their full names here <span style="font-size:.75rem;opacity:.45;font-style:italic;">(optional)</span></label>
+            <textarea name="Guests Unable to Attend" placeholder="e.g. John Smith, Jane Smith"></textarea>
           </div>
           <button type="submit" class="btn">Send My RSVP</button>
           <div id="result"></div>
@@ -438,8 +443,9 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
 <!-- FOOTER -->
 <footer>
   <hr class="sec-rule" style="max-width:clamp(160px,30vw,280px);margin-bottom:.9rem;opacity:.24;">
-  <div class="footer-names">Dane &amp; Kristin</div>
   <p class="tagline">Saddle up darlins'!</p>
+  <div class="footer-names">Dane &amp; Kristin</div>
+  <p class="sec-verse" style="margin-top:.5rem;"><span class="v">For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life.</span><cite>John 3:16</cite></p>
   <p class="loc">October 11, 2026 &middot; Manassero Farms, Irvine, California</p>
 </footer>
 
@@ -457,8 +463,25 @@ window.addEventListener('scroll',()=>{
 
 // ── Attending toggle ──
 document.getElementById('attending').addEventListener('change',function(){
-  document.getElementById('guestCountGroup').style.display=this.value.includes('declines')?'none':'block';
+  var attending=!this.value.includes('decline');
+  document.getElementById('guestNamesGroup').style.display=attending?'block':'none';
+  if(!attending){
+    document.querySelector('[name="Guests Unable to Attend"]').value='';
+  }
 });
+
+// ── Zelle toggle ──
+document.getElementById('zelleBtn').addEventListener('click',function(){
+  var info=document.getElementById('zelleInfo');
+  var open=info.style.maxHeight!=='0px';
+  if(open){
+    info.style.maxHeight='0';info.style.opacity='0';info.style.padding='0 1.6rem';info.style.borderColor='transparent';
+  }else{
+    info.style.maxHeight='120px';info.style.opacity='1';info.style.padding='1.2rem 1.6rem';info.style.borderColor='var(--border)';
+  }
+});
+
+// ── Zelle toggle ──
 
 // ── Countdown ──
 (function tick(){
@@ -479,21 +502,86 @@ document.getElementById('attending').addEventListener('change',function(){
   var popup=document.getElementById('imgPopup');
   var popupImg=document.getElementById('popupImg');
   var total=12;
+  var srcs=[];
+  var curIdx=0;
+  var busy=false;
   var phSvg='<svg viewBox="0 0 24 24" fill="none" stroke="#5c3a1e" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>';
+
   for(var i=1;i<=total;i++){
+    var src='assets/gallery-'+String(i).padStart(3,'0')+'.jpg';
+    srcs.push(src);
     var d=document.createElement('div');
     d.className='gallery-item';
     var img=document.createElement('img');
-    var src='assets/gallery-'+String(i).padStart(3,'0')+'.jpg';
     img.src=src;
     img.alt='Photo '+i;
+    img.loading='eager';
+    img.decoding='async';
     img.onerror=function(){this.parentElement.innerHTML='<div class="ph">'+phSvg+'<span>Photo</span></div>';};
     d.appendChild(img);
-    d.addEventListener('click',(function(s){return function(){popupImg.src=s;popup.classList.add('open');document.body.style.overflow='hidden';};})(src));
+    d.addEventListener('click',(function(idx){return function(){openAt(idx);};})(i-1));
     grid.appendChild(d);
   }
-  popup.addEventListener('click',function(){popup.classList.remove('open');document.body.style.overflow='';});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&popup.classList.contains('open')){popup.classList.remove('open');document.body.style.overflow='';}});
+
+  var busy=false;
+  function openAt(idx){curIdx=idx;popupImg.src=srcs[idx];popupImg.style.cssText='';popup.classList.add('open');document.body.style.overflow='hidden';}
+  function closePopup(){popup.classList.remove('open');document.body.style.overflow='';busy=false;popupImg.style.cssText='';}
+
+  function go(dir){
+    if(busy)return;
+    busy=true;
+    curIdx=(curIdx+dir+srcs.length)%srcs.length;
+    // Hide before swap so browser doesn't flash the raw image
+    popupImg.style.transition='none';
+    popupImg.style.transform='translateX('+(dir>0?'120px':'-120px')+')';
+    popupImg.style.opacity='0';
+    var done=function(){
+      popupImg.offsetWidth;
+      popupImg.style.transition='transform .18s cubic-bezier(.2,0,0,1),opacity .15s ease';
+      popupImg.style.transform='translateX(0)';
+      popupImg.style.opacity='1';
+      setTimeout(function(){busy=false;},200);
+    };
+    popupImg.onload=function(){popupImg.onload=null;done();};
+    popupImg.src=srcs[curIdx];
+    if(popupImg.complete)done();
+  }
+
+  // Close on click outside image
+  popup.addEventListener('click',function(e){if(e.target===popup)closePopup();});
+
+  // Keyboard
+  document.addEventListener('keydown',function(e){
+    if(!popup.classList.contains('open'))return;
+    if(e.key==='Escape')closePopup();
+    if(e.key==='ArrowRight')go(1);
+    if(e.key==='ArrowLeft')go(-1);
+  });
+
+  // Touch swipe
+  var tx=0;
+  popup.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+  popup.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>40){dx<0?go(1):go(-1);}
+  });
+
+  // Trackpad two-finger swipe
+  var wAccum=0,wTimer=null,wLock=false;
+  popup.addEventListener('wheel',function(e){
+    if(!popup.classList.contains('open'))return;
+    e.preventDefault();
+    if(wLock)return;
+    wAccum+=e.deltaX;
+    clearTimeout(wTimer);
+    wTimer=setTimeout(function(){wAccum=0;},200);
+    if(Math.abs(wAccum)>20){
+      wLock=true;
+      go(wAccum>0?1:-1);
+      wAccum=0;
+      setTimeout(function(){wLock=false;},600);
+    }
+  });
 })();
 
 // ── Web3Forms RSVP ──
@@ -513,8 +601,10 @@ form.addEventListener('submit',async function(e){
     var out=await res.json();
     if(out.success){
       resultEl.textContent='';
-      form.style.opacity='0';form.style.transition='opacity .4s';
-      setTimeout(()=>{form.style.display='none';document.getElementById('rsvpSuccess').classList.add('show');},420);
+      var declined=document.getElementById('attending').value.toLowerCase().indexOf('decline')!==-1;
+      document.getElementById('rsvpMsg').textContent=declined?'We\'ll miss you! Thank you for letting us know.':'We can\'t wait to celebrate with you.';
+      form.style.opacity='0';
+      setTimeout(()=>{document.getElementById('rsvpSuccess').classList.add('show');},300);
     } else {
       resultEl.textContent=out.message||'Something went wrong. Please try again.';
     }
