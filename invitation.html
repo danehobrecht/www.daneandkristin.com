@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dane &amp; Kristin | Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #faf4eb;
+  --bg-warm:   #f0e4cf;
+  --bg-card:   #fffcf5;
+  --brown:     #5c3a1e;
+  --brown-mid: #7a4f2d;
+  --brown-lt:  #a8723e;
+  --orange:    #cc6020;
+  --orange-lt: #e07840;
+  --cream:     #e6d5b8;
+  --ink:       #33200c;
+  --ink-mid:   #6b4520;
+  --ink-light: #9a7245;
+  --border:    rgba(92,58,30,0.15);
+  /* ranunculus palette */
+  --blush:     #d9a8a0;
+  --blush-lt:  #eedcd9;
+  --rose:      #c17070;
+  --sage:      #8a9e7a;
+  --sage-lt:   #b8c9aa;
+  --dusty-red: #9e4848;
+  /* expanded palette from bridesmaid mood board */
+  --golden:    #d4900a;
+  --copper:    #c44820;
+  --apricot:   #e8896a;
+  --moss:      #7a9048;
+  --misty-blue:#7aaac8;
+  /* deep brown footer — from hero image dark tones */
+  --footer-bg: #7a3c14;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+
+@page { size:5in 7in; margin:0; }
+@media print {
+  *{ -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important; }
+  html,body{ width:5in; height:7in; }
+  .no-print{ display:none!important; }
+}
+
+body {
+  font-family:'Cormorant Garamond',serif;
+  background:#fff;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:2rem 1rem;
+  gap:1.4rem;
+}
+
+/* ── CARD ── */
+.card {
+  position:relative;
+  width:5in;
+  height:7in;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  box-shadow:0 12px 48px rgba(0,0,0,.3), 0 2px 8px rgba(0,0,0,.12);
+  overflow:hidden;
+}
+
+
+/* ── INSET BORDER — double line ── */
+.card-inset-border {
+  position:absolute;
+  inset:4px;
+  border:4px double rgba(168,114,62,.3);
+  pointer-events:none;
+  z-index:10;
+}
+
+/* ── CARD BODY — all content above footer ── */
+.card-body {
+  flex:1;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-evenly;
+  padding:.3in .25in .2in;
+  gap:0;
+}
+
+/* ── sec-rule: exact from index.html ── */
+.sec-rule {
+  display:block;
+  width:68%;
+  height:1px;
+  border:none;
+  background:linear-gradient(90deg,transparent,var(--brown-lt) 30%,var(--brown-lt) 70%,transparent);
+  opacity:.32;
+  margin:0 auto;
+}
+
+/* ── HERO ── */
+.hero-wrap {
+  width:96%;
+}
+.hero-wrap img {
+  width:100%;
+  max-height:1.42in;
+  object-fit:contain;
+  display:block;
+  margin:0 auto;
+}
+
+/* ── NAMES ── */
+.names {
+  font-family:'Rye',serif;
+  font-size:1.3rem;
+  color:var(--brown);
+  letter-spacing:.07em;
+  text-align:center;
+  line-height:1;
+}
+
+/* ── PHOTO — no frame, clean ── */
+.photo-wrap {
+  width:78%;
+  max-width:3.1in;
+}
+.photo-wrap img {
+  width:100%;
+  height:1.65in;
+  object-fit:cover;
+  object-position:center 14%;
+  display:block;
+  border-radius:3px;
+}
+
+/* ── DETAIL CARDS — exact from index.html ── */
+.details-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.18in;
+  width:100%;
+}
+.detail-card {
+  padding:.22in .12in;
+  border:1px solid var(--border);
+  background:var(--bg-card);
+  box-shadow:0 2px 22px rgba(92,58,30,.055);
+  position:relative;
+  text-align:center;
+}
+.detail-card::before {
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,rgba(168,114,62,0) 0%,rgba(168,114,62,.85) 35%,rgba(168,114,62,.85) 65%,rgba(168,114,62,0) 100%);
+}
+.d-icon {
+  font-size:.7rem;
+  color:var(--orange);
+  opacity:.5;
+  display:block;
+  margin-bottom:.3rem;
+}
+.d-label {
+  font-family:'Rye',serif;
+  font-size:.4rem;
+  letter-spacing:.22em;
+  color:var(--brown-lt);
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:.28rem;
+  opacity:.85;
+}
+.d-val {
+  font-family:'IM Fell English',serif;
+  font-size:.64rem;
+  color:var(--ink);
+  line-height:1.45;
+  font-style:italic;
+  display:block;
+}
+.d-sub {
+  font-size:.46rem;
+  color:var(--ink-light);
+  opacity:.72;
+  margin-top:.18rem;
+  display:block;
+  font-style:normal;
+  font-family:'Cormorant Garamond',serif;
+  letter-spacing:.04em;
+}
+
+/* ── SCRIPTURE ── */
+.verse {
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:.48rem;
+  color:var(--brown);
+  opacity:.62;
+  text-align:center;
+  line-height:1.6;
+  width:88%;
+}
+.verse cite {
+  display:block;
+  font-style:normal;
+  font-size:.44rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  margin-top:.14rem;
+  opacity:.75;
+}
+
+/* ── FOOTER ── */
+.footer {
+  position:relative;
+  width:100%;
+  background:var(--footer-bg);
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:.6rem 1rem .7rem;
+  gap:.2rem;
+}
+.footer-tagline {
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:.72rem;
+  color:#faf4eb;
+  opacity:.88;
+  letter-spacing:.04em;
+}
+.footer-rule {
+  display:block;
+  width:38%;
+  height:1px;
+  border:none;
+  background:linear-gradient(90deg,transparent,rgba(250,244,235,.35) 30%,rgba(250,244,235,.35) 70%,transparent);
+}
+.footer-rsvp {
+  font-family:'Rye',serif;
+  font-size:.38rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#faf4eb;
+  opacity:.58;
+}
+.footer-url {
+  font-family:'IM Fell English',serif;
+  font-style:italic;
+  font-size:.64rem;
+  color:#faf4eb;
+  opacity:.82;
+  text-decoration:none;
+}
+
+/* ── SCREEN ONLY ── */
+.no-print {
+  font-family:'Rye',serif;
+  font-size:.58rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  background:var(--brown);
+  color:#fff;
+  border:none;
+  padding:.65rem 2rem;
+  cursor:pointer;
+  transition:background .2s;
+}
+.hint {
+  font-family:'Cormorant Garamond',serif;
+  font-size:.72rem;
+  color:#fff;
+  text-align:center;
+  max-width:420px;
+  line-height:1.8;
+  letter-spacing:.08em;
+  background:var(--brown);
+  border:none;
+  padding:1rem 1.6rem;
+}
+.hint strong { color:var(--orange-lt); }
+.hint code {
+  font-size:.68rem;
+  background:rgba(255,255,255,.12);
+  padding:.1em .35em;
+  border-radius:2px;
+  color:#fff;
+}
+</style>
+</head>
+<body>
+
+<button class="no-print" onclick="window.print()">&#128424;&nbsp; Print / Save as PDF</button>
+
+<div class="card">
+
+  <div class="card-inset-border"></div>
+  <div class="card-body">
+
+    <div class="hero-wrap">
+      <img src="assets/hero-image.png" alt="Saddle Up for the Wedding of Dane &amp; Kristin" />
+    </div>
+
+    <hr class="sec-rule">
+
+    <div class="names">Dane &amp; Kristin</div>
+
+    <div class="photo-wrap">
+      <img src="assets/invitation.jpg" alt="Dane and Kristin" />
+    </div>
+
+    <hr class="sec-rule" style="width:52%;">
+
+    <!-- Detail cards — exact structure from index.html -->
+    <div class="details-grid">
+
+      <div class="detail-card">
+        <span class="d-icon">✦</span>
+        <span class="d-label">Where</span>
+        <span class="d-val">Manassero Farms</span>
+        <span class="d-sub">33 Irvine Valley<br>Irvine, CA 92604</span>
+      </div>
+
+      <div class="detail-card">
+        <span class="d-icon">✦</span>
+        <span class="d-label">When</span>
+        <span class="d-val">October 11, 2026</span>
+        <span class="d-sub">Sunday &middot; 5:30 PM<br>Ceremony</span>
+      </div>
+
+      <div class="detail-card">
+        <span class="d-icon">✦</span>
+        <span class="d-label">Attire</span>
+        <span class="d-val">Rustic Elegance</span>
+        <span class="d-sub">Boots strongly<br>encouraged!</span>
+      </div>
+
+    </div>
+
+    <hr class="sec-rule" style="width:44%;opacity:.22;">
+
+    <p class="verse">
+      &#8220;This is my commandment, that you love one another as I have loved you.&#8221;
+      <cite>John 15:12</cite>
+    </p>
+
+  </div>
+
+  <div class="footer">
+    <span class="footer-tagline">Saddle up darlins&#39;!</span>
+    <span class="footer-rule"></span>
+    <span class="footer-rsvp">Please RSVP by July 11th, 2026</span>
+    <a class="footer-url" href="https://www.daneandkristin.com/">www.daneandkristin.com</a>
+  </div>
+
+</div>
+
+<p class="hint no-print">
+  Print &rarr; Size: <strong>5&times;7 in</strong> &rarr; Scale: <strong>100%</strong> &rarr; Disable &ldquo;Fit to page&rdquo;<br>
+  Place <code>hero-image.png</code> and <code>invitation.jpg</code> in <code>assets/</code>
+</p>
+
+</body>
+</html>
