@@ -361,23 +361,23 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
     <p class="sec-verse reveal d1"><span class="v">He who finds a wife finds a good thing and obtains favor from the Lord.</span><cite>Proverbs 18:22</cite></p>
     <div class="timeline">
       <div class="tl-item reveal">
-        <div class="tl-left"><span class="tl-time">5:00 PM</span><span class="tl-title">Guests Arrive</span></div>
+        <div class="tl-left"><span class="tl-time">5:00 PM</span><span class="tl-title">Guests Arrive for the Expensive Party</span></div>
         <div class="tl-dot"></div><div class="tl-spacer"></div>
       </div>
       <div class="tl-item reveal d1">
         <div class="tl-spacer"></div><div class="tl-dot"></div>
-        <div class="tl-right"><span class="tl-time">5:30 PM</span><span class="tl-title">Ceremony</span></div>
+        <div class="tl-right"><span class="tl-time">5:30 PM</span><span class="tl-title">The Expensive Ceremony Begins</span></div>
       </div>
       <div class="tl-item reveal d2">
-        <div class="tl-left"><span class="tl-time">6:00 PM</span><span class="tl-title">Reception Opens</span></div>
+        <div class="tl-left"><span class="tl-time">6:00 PM</span><span class="tl-title">The Expensive Reception Opens</span></div>
         <div class="tl-dot"></div><div class="tl-spacer"></div>
       </div>
       <div class="tl-item reveal d3">
         <div class="tl-spacer"></div><div class="tl-dot"></div>
-        <div class="tl-right"><span class="tl-time">7:00 PM</span><span class="tl-title">Dance Floor</span></div>
+        <div class="tl-right"><span class="tl-time">7:00 PM</span><span class="tl-title">Expensive Dance Party</span></div>
       </div>
       <div class="tl-item reveal d4">
-        <div class="tl-left"><span class="tl-time">9:00 PM</span><span class="tl-title">Send-Off</span></div>
+        <div class="tl-left"><span class="tl-time">9:00 PM</span><span class="tl-title">Economical Send-Off</span></div>
         <div class="tl-dot"></div><div class="tl-spacer"></div>
       </div>
     </div>
@@ -439,10 +439,11 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
         Zelle
       </button>
     </div>
-    <div id="zelleInfo" style="margin-top:1.2rem;padding:0 1.6rem;border:1px solid transparent;background:var(--bg-card);text-align:center;max-width:320px;margin-left:auto;margin-right:auto;max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,padding .35s ease,border-color .35s ease;">
+    <div id="zelleInfo" style="margin:1.2rem 0 1.2rem 0;padding:0 1.6rem;border:1px solid transparent;background:var(--bg-card);text-align:center;max-width:320px;margin-left:auto;margin-right:auto;max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease,opacity .3s ease,padding .35s ease,border-color .35s ease;">
       <p style="font-family:'Rye',serif;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brown-lt);margin-bottom:.5rem;">Send via Zelle to</p>
       <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--brown);">Kristin &middot; <a href="tel:+16572033218" style="color:var(--brown);text-decoration:none;border-bottom:1px solid var(--cream);">+1 (657) 203-3218</a></p>
     </div>
+    <p class="reveal d4" style="font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--brown);max-width:480px;margin:0.64rem auto 0;line-height:1.7;text-align:center;">Yes, that's right; the wedding registry only has one item. We intend to have ~2 billion children, and we need room to do that.<br><br>In all seriousness, we're thankful to have you all as support systems in our life. Whatever you're able to give is appreciated. We hope you have a wonderful time.<br><br>LET'S PARTY!<br><br>In Christ,<br>Dane &amp; Kristin</p>
   </div>
 </div>
 
@@ -480,6 +481,10 @@ footer .loc{font-size:.6rem;letter-spacing:.2em;opacity:.3;text-transform:upperc
           <div class="form-group" id="guestNamesGroup" style="display:none;">
             <label>If anyone in your party is unable to attend, please list their full names here <span style="font-size:.75rem;opacity:.45;font-style:italic;">(optional)</span></label>
             <textarea name="Guests Unable to Attend" placeholder="e.g. John Smith, Jane Smith"></textarea>
+          </div>
+          <div class="form-group" id="songRequestGroup" style="margin-top:-4px;display:none;">
+            <label>Any song requests for the reception? <span style="font-size:.75rem;opacity:.45;font-style:italic;">(optional)</span></label>
+            <input type="text" name="Song Request" placeholder="e.g. Boot Scootin' Boogie">
           </div>
           <button type="submit" class="btn">Send My RSVP</button>
           <div id="result"></div>
@@ -519,8 +524,10 @@ window.addEventListener('scroll',()=>{
 document.getElementById('attending').addEventListener('change',function(){
   var attending=!this.value.includes('decline');
   document.getElementById('guestNamesGroup').style.display=attending?'block':'none';
+  document.getElementById('songRequestGroup').style.display=attending?'block':'none';
   if(!attending){
     document.querySelector('[name="Guests Unable to Attend"]').value='';
+    document.querySelector('[name="Song Request"]').value='';
   }
 });
 
